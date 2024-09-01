@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <title>Users List</title>
+  </head>
+  <body>
+    <h1>Users List</h1>
+    <a href="/users/new">Add New User</a>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+          <a th:href="@{/users/view/{id}(id=${user.id})}">View</a>
+          <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
+          <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
